@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.title-font {
+  font-family: 'Anton', sans-serif;
+  font-size: 55px;
+}
+
+.font {
+  p,
+  pre,
+  tr,
+  td,
+  legend,
+  label {
+    font-family: 'Lexend Deca', sans-serif;
+  }
+
+  th {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: bold;
+  }
+}
+
+.table-border {
+  box-shadow: 3px 3px 5px rgb(112, 112, 112);
+}
+
+.font2 {
+
+  p,
+  pre,
+  tr,
+  td,
+  legend,
+  label {
+    font-family: 'Lato', sans-serif;
+  }
+
+  th {
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* // letter-spacing: 1px; */
+}
+
+.font1 {
+
+  p,
+  pre,
+  tr,
+  td,
+  legend,
+  label {
+    font-family: 'Azeret Mono', monospace;
+  }
+
+  th {
+    font-family: 'Azeret Mono', monospace;
+  }
+
+  /* // letter-spacing: 1px; */
+}
+
+#printContainer {
+  background-color: white;
+
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-style: solid;
+    table-layout: fixed;
+  }
+
+  td {
+    border: 1px solid black;
+    word-wrap: break-word;
+  }
+}
