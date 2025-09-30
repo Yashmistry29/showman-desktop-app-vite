@@ -5,7 +5,7 @@ import { sendRequest } from "../../utils/Helpers/HelpersMethod";
 import { useMeasurement } from '../context/MeasurementContext';
 
 export const GetCustomerDetails = () => {
-  const {names,selectedCustomer,setSelectedCustomer,setJobId,jobId,setCustomerData,setView,jobSelect,setJobSelect,jobIds,setJobIds,initialJobData,setSdata,setPdata,setUpdate} = useMeasurement();
+  const { names, selectedCustomer, setSelectedCustomer, setJobId, jobId, setCustomerData, setView, jobSelect, setJobSelect, jobIds, setJobIds, initialJobData, setSdata, setPdata, setUpdate, priceData } = useMeasurement();
 
 
   const handleChange = (e, value, option) => {
@@ -38,7 +38,7 @@ export const GetCustomerDetails = () => {
               // setQuantities(prev => ({ shirt: 1, pant: prev.pant }));
               setSdata(initialJobData.shirt_data);
             } else {
-              // data.shirt_data["price"] = price.shirt;
+              data.shirt_data["price"] = priceData.shirt;
               // setQuantities(prev => ({ shirt: data.shirt_quantity, pant: prev.pant }));
               setSdata(data.shirt_data);
             }
@@ -48,7 +48,7 @@ export const GetCustomerDetails = () => {
               setPdata(initialJobData.pant_data);
             } else {
               // setQuantities(prev => ({ pant: data.pant_quantity, shirt: prev.shirt }));
-              // data.pant_data["price"] = price.pant;
+              data.pant_data["price"] = priceData.pant;
               setPdata(data.pant_data);
             }
           }
@@ -60,7 +60,7 @@ export const GetCustomerDetails = () => {
     }
   }
 
-  // console.log(selectedCustomer,jobIds)
+  // console.log(selectedCustomer, jobIds, priceData)
   useEffect(() => {
     if (selectedCustomer) {
       sendRequest("/customer/getcustomer", "POST", { c_id: selectedCustomer.c_id })

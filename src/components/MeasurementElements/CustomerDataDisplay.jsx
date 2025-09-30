@@ -5,55 +5,14 @@ import { useMeasurement } from '../context/MeasurementContext'
 
 
 function CustomerDataDisplay() {
-	const {customerData,setCustomerData,view,errors} = useMeasurement()
+	const { customerData, setCustomerData, view, errors } = useMeasurement()
+
+	const c_errors = errors.customer;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setCustomerData({ ...customerData, [name]: value });
 	}
-
-	// const handleClick = (e) => {
-	// 	e.preventDefault();
-	// 	console.log(customerData)
-	// 	const validationErrors = ValidateCustomer(customerData);
-	// 	const isValid = Object.keys(validationErrors).length === 0;
-	// 	console.log(validationErrors, isValid);
-	// 	setErrors(validationErrors);
-	// 	if (isValid) {
-	// 		console.log(customerData);
-	// 		sendRequest('/customer/create', "POST", customerData)
-	// 			.then((res) => {
-	// 				if (res.success) {
-	// 					toast.success(res.message, {
-	// 						position: "top-right",
-	// 						autoClose: 2000,
-	// 						hideProgressBar: false,
-	// 						closeOnClick: true,
-	// 						pauseOnHover: true,
-	// 						draggable: true,
-	// 					});
-	// 					setView(true)
-	// 				} else {
-	// 					toast.error(res.message, {
-	// 						position: "top-right",
-	// 						autoClose: 2000,
-	// 						hideProgressBar: false,
-	// 						closeOnClick: true,
-	// 						pauseOnHover: true,
-	// 						draggable: true,
-	// 					});
-	// 				}
-	// 			})
-	// 	} else {
-	// 		console.log(errors);
-	// 		toast.error("Enter Customer Details Properly");
-	// 	}
-	// }
-
-	// const handleReset = () => {
-	// 	setCustomerData(resetData);
-	// 	setErrors({})
-	// }
 
 	useEffect(() => {
 		if (customerData.c_id === null || customerData.c_id === undefined) {
@@ -91,8 +50,8 @@ function CustomerDataDisplay() {
 								margin='none'
 									value={customerData.name ?? ""}
 									onChange={handleChange}
-									error={Boolean(errors.customer.name)}
-									helperText={errors.customer.name}
+								error={Boolean(c_errors.name)}
+								helperText={c_errors.name}
 									className='w-full'
 								/>
 							<pre className='font-medium pr-2'>{`\tCustomer Id:  #${customerData.c_id}`}</pre>
@@ -102,12 +61,12 @@ function CustomerDataDisplay() {
 								<TextField
 									variant='outlined'
 									name='address'
-								size="small"
+								size='small'
 								margin='none'
 									value={customerData.address ?? ""}
 									onChange={handleChange}
-									error={Boolean(errors.customer.address)}
-									helperText={errors.customer.address}
+								error={Boolean(c_errors.address)}
+								helperText={c_errors.address}
 									className='w-full'
 								/>
 							</div>
@@ -126,17 +85,7 @@ function CustomerDataDisplay() {
 									value={customerData.phone ?? ""}
 									onChange={handleChange}
 									className='w-full'
-								/>
-								{/* <Done
-									className='button-border b--black link pointer tc ma2 bg-green black ba bw1 dim dib w2 pa1 br2 b'
-									fontSize="small"
-									onClick={handleClick}
-								/>
-								<Reset
-									className='button-border b--black link pointer tc ma2 bg-white black ba bw1 dim dib w2 pa1 br2 b'
-									fontSize="small"
-									onClick={handleReset}
-								/> */}
+							/>
 							</div>
 						</div>
 				}

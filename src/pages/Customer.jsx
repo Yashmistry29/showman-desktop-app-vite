@@ -74,9 +74,11 @@ function Customer() {
 
   const handleReset = () => {
     setSearch(null)
+    setNames([]);
     setData(resetData);
     setErrors({})
     setNewCustomer(true);
+    loadCustomers();
   }
 
   console.log(search)
@@ -111,15 +113,21 @@ function Customer() {
     }
   }, [newCustomer, data.c_id])
 
-  useEffect(() => {
-    sendRequest("/customer/getnamelist", 'POST')
-      .then((res) => {
+  const loadCustomers = async () => {
+    try {
+      const res = await sendRequest("/customer/getnamelist", "POST");
         if (res.success) {
-          console.log(res.data)
+          // console.log(res.data);
           setNames(res.data);
         }
-      })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } catch (err) {
+      console.log(err, "error loading customerList");
+    }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => await loadCustomers();
+    fetchData();
   }, [])
 
   return (

@@ -17,6 +17,7 @@ export const MeasurementProvider = ({ children }) => {
   const [checkedData, setCheckedData] = useState(checked);
   const [sdata, setSdata] = useState(initialJobData.shirt_data);
   const [pdata, setPdata] = useState(initialJobData.pant_data);
+  const [priceData, setPriceData] = useState({});
   const [quantities, setQuantities] = useState({ shirt: initialJobData.shirt_quantity, pant: initialJobData.pant_quantity });
   const [customerData, setCustomerData] = useState({});
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -95,7 +96,7 @@ export const MeasurementProvider = ({ children }) => {
 
     setErrors(newErrors)
 
-    console.log( data);
+    console.log(data, newErrors, isValidCustomer, isValidPant, isValidShirt, isValidDate);
 
     if ((isValidPant || isValidShirt) && isValidDate && isValidCustomer) {
       var route = '/customer/create';
@@ -158,7 +159,20 @@ export const MeasurementProvider = ({ children }) => {
       await loadCustomers();
     };
     fetchData();
-  },[])
+  }, [])
+
+  useEffect(() => {
+    sendRequest("/price/getprice", "POST")
+      .then((res) => {
+        const price = res.data;
+        sdata["price"] = price.shirt_price;
+        pdata["price"] = price.pant_price;
+        setPriceData({ shirt: res.data.shirt_price, pant: res.data.pant_price })
+      }).catch((err) => {
+        console.log(err);
+      })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
 
   return (
@@ -177,7 +191,8 @@ export const MeasurementProvider = ({ children }) => {
       returnDate, setReturnDate,
       checkedData, setCheckedData,
       quantities, setQuantities,
-      update,setUpdate,
+      update, setUpdate,
+      priceData, setPriceData,
       ResetData,
       initialJobData,
       totalPrice,

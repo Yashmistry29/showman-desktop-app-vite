@@ -189,6 +189,40 @@ export function validateDate(createdAt, returnDate) {
   if (createdAt.toDateString() === returnDate.toDateString()) {
     error.date = "Select Return Date";
   }
-
   return error
+}
+
+export function validateEmployee(values) {
+  let errors = {};
+  //name Errors
+  if (!values.name) {
+    errors.name = "A name is required";
+  }
+  else if (values.name.length < 4) {
+    errors.name = "Name must be atleast 4 Characters.";
+  }
+
+  // phone Errors
+  if (!values.phone) {
+    errors.phone = "A Contact Number is required";
+  } else if (values.phone.length < 10) {
+    errors.phone = "Contact Number must be 10 Characters.";
+  }
+  // type Errors
+  if (!values.type) {
+    errors.type = "Employee Type is required";
+  }
+  // wages_type Errors
+  if (!values.wages_type) {
+    errors.wages_type = "Wages Type is required";
+  }
+
+  // Address Errors
+  if (!values.address) {
+    errors.address = "A Address is required.";
+  } else if (values.address.length < 4) {
+    errors.address = "Address must be atleast 4 Characters.";
+  }
+
+  return errors
 }

@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import MuiListItem from "@mui/material/ListItemButton";
+import MenuItem from "@mui/material/MenuItem";
 
 export const ListItemButton = styled(MuiListItem)({
   backgroundColor: "darkblue",
@@ -10,4 +11,16 @@ export const ListItemButton = styled(MuiListItem)({
     backgroundColor: '#194DFA',
   }
 });
+
+export const StyledMenu = styled(MenuItem)({
+  "& li": {
+    backgroundColor: "white",
+  },
+  "&:hover": {
+    backgroundColor: "#0891b2",
+  },
+  "&.Mui-focusVisible": {
+    backgroundColor: "#0891b2",
+  }
+})
 

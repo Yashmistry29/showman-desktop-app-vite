@@ -1,16 +1,17 @@
 import React from 'react'
-import { Grid, IconButton, MenuItem } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
 import { Pocket_Type, belt_type } from '../../utils/Data/InitialValues';
 import { CssTextField } from '../FormElements/TextfieldForm';
+import { StyledMenu as MenuItem } from '../FormElements/ListItemButton';
 import { Edit, Done, AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { useMeasurement } from '../context/MeasurementContext';
 
 const PantGrid = () => {
 
-  const { pdata, setPdata, checkedData, quantities, setQuantities, errors
-  } = useMeasurement();
+  const { pdata, setPdata, checkedData, quantities, setQuantities, errors } = useMeasurement();
 
   const [priceChange, setPriceChange] = React.useState(true);
+  const pant_errors = errors.pant;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,21 +48,11 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.belt_type}
-            {...(errors.belt_type && { error: true, helperText: errors.belt_type })}
+            {...(pant_errors.belt_type && { error: true, helperText: pant_errors.belt_type })}
           >
             {
               belt_type.map((type) => (
-                <MenuItem key={type.value} value={type.value} sx={{
-                  "& li": {
-                    backgroundColor: "white",
-                  },
-                  "&:hover": {
-                    backgroundColor: "#9966cb",
-                  },
-                  "&.Mui-focusVisible": {
-                    backgroundColor: "#9966cb",
-                  }
-                }}>
+                <MenuItem key={type.value} value={type.value}>
                   {type.name}
                 </MenuItem>
               ))
@@ -78,7 +69,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.p_length}
-            {...(errors.p_length && { error: true, helperText: errors.p_length })}
+            {...(pant_errors.p_length && { error: true, helperText: pant_errors.p_length })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -91,7 +82,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.waist}
-            {...(errors.waist && { error: true, helperText: errors.waist })}
+            {...(pant_errors.waist && { error: true, helperText: pant_errors.waist })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -104,7 +95,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.jholo}
-            {...(errors.jholo && { error: true, helperText: errors.jholo })}
+            {...(pant_errors.jholo && { error: true, helperText: pant_errors.jholo })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -117,7 +108,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.seat}
-            {...(errors.seat && { error: true, helperText: errors.seat })}
+            {...(pant_errors.seat && { error: true, helperText: pant_errors.seat })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -131,7 +122,7 @@ const PantGrid = () => {
 
             onChange={handleChange}
             value={pdata.thighs}
-            {...(errors.thighs && { error: true, helperText: errors.thighs })}
+            {...(pant_errors.thighs && { error: true, helperText: pant_errors.thighs })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -144,7 +135,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.knee}
-            {...(errors.knee && { error: true, helperText: errors.knee })}
+            {...(pant_errors.knee && { error: true, helperText: pant_errors.knee })}
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
@@ -158,7 +149,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.bottom}
-            {...(errors.bottom && { error: true, helperText: errors.bottom })}
+            {...(pant_errors.bottom && { error: true, helperText: pant_errors.bottom })}
           />
         </div>
       </div>
@@ -175,21 +166,11 @@ const PantGrid = () => {
             onChange={handleChange}
             size="small"
             value={pdata.pocket_type}
-            {...(errors.pocket_type && { error: true, helperText: errors.pocket_type })}
+            {...(pant_errors.pocket_type && { error: true, helperText: pant_errors.pocket_type })}
           >
             {
               Pocket_Type.map((type) => (
-                <MenuItem key={type.value} value={type.value} sx={{
-                  "& li": {
-                    backgroundColor: "white",
-                  },
-                  "&:hover": {
-                    backgroundColor: "#9966cb",
-                  },
-                  "&.Mui-focusVisible": {
-                    backgroundColor: "#9966cb",
-                  }
-                }}>
+                <MenuItem key={type.value} value={type.value}>
                   {type.name}
                 </MenuItem>
               ))
@@ -206,7 +187,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.chipti}
-            {...(errors.chipti && { error: true, helperText: errors.chipti })}
+            {...(pant_errors.chipti && { error: true, helperText: pant_errors.chipti })}
           />
         </div>
         <div className='flex justify-start items-center'>
@@ -220,7 +201,7 @@ const PantGrid = () => {
             size='small'
             onChange={handleChange}
             value={pdata.back_pocket}
-            {...(errors.back_pocket && { error: true, helperText: errors.back_pocket })}
+            {...(pant_errors.back_pocket && { error: true, helperText: pant_errors.back_pocket })}
           />
         </div>
         <div className='flex items-baseline-last'>

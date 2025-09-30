@@ -35,7 +35,7 @@ function Measurement() {
       <div className='flex justify-evenly items-center w-11/12 mx-auto border-2 rounded-b-xl bg-stone-300 py-4 mt-5 gap-4 px-4'>
         <p className='font-medium text-lg pr-2 my-auto mr-2'>{`Job Id: ${id}`}</p>
         <p className='pr-2 text-lg font-medium'>Total Price: <span className='b'>{totalPrice}</span>&#8377;</p>
-        <p className='text-lg font-medium pr-2'>Created At: {new Date().toDateString()}</p>
+        <p className='text-lg font-medium pr-2'> {new Date().toDateString()}</p>
         <div className='flex justify-start items-center w-3/12'>
           <pre className='text-lg font-medium pr-2'>Return Date</pre>
           <CssTextField

@@ -32,7 +32,7 @@ const MenuTemplate = [
           childWindow.setMenu(null);
           isDev
             ? childWindow.loadURL('http://localhost:5173/#/signup')
-            : childWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/signup' });
+            : childWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/signup' });
           childWindow.show();
         }
       },
@@ -51,7 +51,7 @@ const MenuTemplate = [
           childWindow.setMenu(null);
           isDev
             ? childWindow.loadURL('http://localhost:5173/#/backupandrestore')
-            : childWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/backupandrestore' });
+            : childWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/backupandrestore' });
           childWindow.show();
         }
       },
@@ -78,7 +78,7 @@ const MenuTemplate = [
           childWindow.setMenu(null);
           isDev
             ? childWindow.loadURL('http://localhost:5173/#/customer')
-            : childWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/customer' });
+            : childWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/customer' });
           childWindow.show();
         }
       },
@@ -94,7 +94,7 @@ const MenuTemplate = [
           childWindow.setMenu(null);
           isDev
             ? childWindow.loadURL('http://localhost:5173/#/measurement')
-            : childWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/measurement' });
+            : childWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/measurement' });
           childWindow.maximize();
           childWindow.show();
         }
@@ -103,11 +103,11 @@ const MenuTemplate = [
         label: "Create/Update Employee",
         accelerator: "CmdOrCtrl+E",
         click: () => {
-          childWindow = new BrowserWindow({ height: 580, width: 800, parent: mainWindow, show: false, maximizable: false, webPreferences: { nodeIntegration: true, contextIsolation: false } });
+          childWindow = new BrowserWindow({ height: 650, width: 800, parent: mainWindow, show: false, maximizable: false, webPreferences: { nodeIntegration: true, contextIsolation: false } });
           childWindow.setMenu(null);
           isDev ?
             childWindow.loadURL('http://localhost:5173/#/employee') :
-            childWindow.loadFile(`${path.join(__dirname, 'index.html')}`, { hash: '/employee' });
+            childWindow.loadFile(`${path.join(__dirname, '../dist/index.html')}`, { hash: '/employee' });
           childWindow.show();
         }
       },
@@ -127,7 +127,7 @@ const MenuTemplate = [
           childWindow.setMenu(null);
           isDev
             ? childWindow.loadURL('http://localhost:5173/#/price/')
-            : childWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/price' });
+            : childWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/price' });
           childWindow.show();
         }
       },

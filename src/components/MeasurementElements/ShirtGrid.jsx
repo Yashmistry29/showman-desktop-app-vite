@@ -1,15 +1,16 @@
 import React from 'react'
-import { Grid, IconButton, MenuItem } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
 import { Shirt_type, Pocket_Strip } from '../../utils/Data/InitialValues';
 import { CssTextField } from '../FormElements/TextfieldForm';
+import { StyledMenu as MenuItem } from '../FormElements/ListItemButton';
 import { Edit, Done, IndeterminateCheckBox, AddBox } from '@mui/icons-material';
 import { useMeasurement } from '../context/MeasurementContext';
 
 const ShirtGrid = () => {
 
-	const { sdata, setSdata, quantities, setQuantities,errors,checkedData } = useMeasurement();
+	const { sdata, setSdata, quantities, setQuantities, errors, checkedData } = useMeasurement();
 
-
+	const shirt_errors = errors.shirt;
 
 	const [priceChange, setPriceChange] = React.useState(true);
 
@@ -48,21 +49,11 @@ const ShirtGrid = () => {
 						size="small"
 						onChange={handleChange}
 						value={sdata.shirt_type}
-						{...(errors.shirt_type && { error: true, helperText: errors.shirt_type })}
+						{...(shirt_errors.shirt_type && { error: true, helperText: shirt_errors.shirt_type })}
 					>
 						{
 							Shirt_type.map((type) => (
-								<MenuItem key={type.value} value={type.value} sx={{
-									"& li": {
-										backgroundColor: "white",
-									},
-									"&:hover": {
-										backgroundColor: "#9966cb",
-									},
-									"&.Mui-focusVisible": {
-										backgroundColor: "#9966cb",
-									}
-								}}>
+								<MenuItem key={type.value} value={type.value} >
 									{type.name}
 								</MenuItem>
 							))
@@ -78,7 +69,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.s_length && { error: true, helperText: errors.s_length })}
+						{...(shirt_errors.s_length && { error: true, helperText: shirt_errors.s_length })}
 						value={sdata.s_length}
 					/>
 				</div>
@@ -91,7 +82,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.shoulder && { error: true, helperText: errors.shoulder })}
+						{...(shirt_errors.shoulder && { error: true, helperText: shirt_errors.shoulder })}
 						value={sdata.shoulder}
 					/>
 				</div>
@@ -104,7 +95,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.sleeve && { error: true, helperText: errors.sleeve })}
+						{...(shirt_errors.sleeve && { error: true, helperText: shirt_errors.sleeve })}
 						value={sdata.sleeve}
 					/>
 				</div>
@@ -117,7 +108,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.cuff && { error: true, helperText: errors.cuff })}
+						{...(shirt_errors.cuff && { error: true, helperText: shirt_errors.cuff })}
 						value={sdata.cuff}
 					/>
 				</div>
@@ -130,7 +121,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.chest && { error: true, helperText: errors.chest })}
+						{...(shirt_errors.chest && { error: true, helperText: shirt_errors.chest })}
 						value={sdata.chest}
 					/>
 				</div>
@@ -143,7 +134,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.waist && { error: true, helperText: errors.waist })}
+						{...(shirt_errors.waist && { error: true, helperText: shirt_errors.waist })}
 						value={sdata.waist}
 					/>
 				</div>
@@ -156,7 +147,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.seat && { error: true, helperText: errors.seat })}
+						{...(shirt_errors.seat && { error: true, helperText: shirt_errors.seat })}
 						value={sdata.seat}
 					/>
 				</div>
@@ -171,7 +162,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.pocket && { error: true, helperText: errors.pocket })}
+						{...(shirt_errors.pocket && { error: true, helperText: shirt_errors.pocket })}
 						value={sdata.pocket}
 					/>
 				</div>
@@ -184,7 +175,7 @@ const ShirtGrid = () => {
 						fullWidth
 						size="small"
 						onChange={handleChange}
-						{...(errors.collar && { error: true, helperText: errors.collar })}
+						{...(shirt_errors.collar && { error: true, helperText: shirt_errors.collar })}
 						value={sdata.collar}
 					/>
 				</div>
@@ -199,21 +190,11 @@ const ShirtGrid = () => {
 						size="small"
 						onChange={handleChange}
 						value={sdata.strip}
-						{...(errors.strip && { error: true, helperText: errors.strip })}
+						{...(shirt_errors.strip && { error: true, helperText: shirt_errors.strip })}
 					>
 						{
 							Pocket_Strip.map((type) => (
-								<MenuItem key={type.value} value={type.value} sx={{
-									"& li": {
-										backgroundColor: "white",
-									},
-									"&:hover": {
-										backgroundColor: "#9966cb",
-									},
-									"&.Mui-focusVisible": {
-										backgroundColor: "#9966cb",
-									}
-								}}>
+								<MenuItem key={type.value} value={type.value}>
 									{type.name}
 								</MenuItem>
 							))

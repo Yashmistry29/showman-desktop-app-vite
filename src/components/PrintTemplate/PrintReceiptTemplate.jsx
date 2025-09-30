@@ -55,8 +55,8 @@ function PrintReceiptTemplate({ jobData, customerData, shirt_type, advance }) {
           </tr>
           <tr>
             <td rowSpan={4} colSpan={1} style={{ wordWrap: "break-word" }}>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{`પેન્ટ`}</p>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{`${shirt_type}`}</p> 
+              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{jobData.pant_quantity !== 0 ? `પેન્ટ` : "-"}</p>
+              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{jobData.shirt_quantity !== 0 ? `${shirt_type}` : "-"}</p> 
             </td>
             <td rowSpan={4}>
               <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.pant_quantity !== 0 ? `${jobData.pant_quantity}` : "-"}</p>

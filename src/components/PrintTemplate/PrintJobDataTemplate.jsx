@@ -35,14 +35,20 @@ function PrintTemplate({ jobData, customerData, ShirtData, PantData}) {
                 <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`મોરી\t\t : `}</span>{PantData === undefined ? "" : PantData.bottom}</pre>
               </div>
                 <div className='w-full p-4'>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બેલ્ટ\t     : `}</span>{PantData === undefined ? "" : PantData.belt_type}</pre>
+                  <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બેલ્ટ\t\t     : `}</span>{PantData === undefined ? "" : PantData.belt_type}</pre>
                   <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પોકેટ\t     : `}</span>{PantData === undefined ? "" : PantData.pocket_type}</pre>
                   <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`ચીપટી\t     : `}</span>{PantData === undefined ? "" : PantData.chipti}</pre>
                   <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બેક પોકેટ : `}</span>{PantData === undefined ? "" : PantData.back_pocket}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
-                {PantData===undefined || PantData.description!=="" ?<div className='mx-0 my-4 py-8 border-2 border-dashed'>
-                    <p className='lg:text-3xl md:text-lg'>{PantData === undefined ? "" : PantData.description}</p>
-                </div>:""}
+                  {
+                    PantData === undefined || PantData.description !== "" ?
+                      <>
+                        <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
+                        <div className='mx-0 my-4 py-8 border-2 border-dashed'>
+                          <p className='lg:text-3xl md:text-lg'>{PantData === undefined ? "" : PantData.description}</p>
+                        </div>
+                      </> : ""
+
+                  }
               </div>
               </div>
             </td>
@@ -62,10 +68,15 @@ function PrintTemplate({ jobData, customerData, ShirtData, PantData}) {
                 <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`કોલર : `}</span>{ShirtData === undefined ? "" : ShirtData.collar}</pre>
                 <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પોકેટ : `}</span>{ShirtData === undefined ? "" : ShirtData.pocket}</pre>
                 <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પટ્ટી    : `}</span>{ShirtData === undefined ? "" : ShirtData.strip === 'in' ? 'અંદર' : ShirtData.strip === "out" ? 'આગળ' : ShirtData.strip}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
-                  {ShirtData === undefined || ShirtData.description !== "" ? <div className='mx-0 my-4 py-8 border-2 border-dashed'>
-                    <p className='lg:text-3xl md:text-lg'>{ShirtData === undefined ? "" : ShirtData.description}</p>
-                  </div> : ""}
+                  {
+                    ShirtData === undefined || ShirtData.description !== "" ?
+                      <>
+                        <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
+                        <div className='mx-0 my-4 py-8 border-2 border-dashed'>
+                          <p className='lg:text-3xl md:text-lg'>{ShirtData === undefined ? "" : ShirtData.description}</p>
+                        </div>
+                      </> : ""
+                  }
               </div>
               </div>
             </td>

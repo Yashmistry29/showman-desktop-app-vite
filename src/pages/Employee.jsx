@@ -1,10 +1,12 @@
-import { Autocomplete, Avatar, createFilterOptions, Grid, MenuItem } from '@mui/material'
+import { Autocomplete, Avatar, createFilterOptions } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { CssTextField as TextField } from '../components/FormElements/TextfieldForm'
+import { StyledMenu as MenuItem } from '../components/FormElements/ListItemButton'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { NewEmployee,EmployeeType,WagesType,CreateEmployee,EmployeeSearch } from '../utils/Data/InitialValues';
 import { sendRequest } from '../utils/Helpers/HelpersMethod';
+import { validateEmployee } from '../utils/Validation/FormValidation'
 
 
 export default function Employee() {
@@ -16,7 +18,43 @@ export default function Employee() {
   const [errors, setErrors] = useState({});
   const [e_id, setId] = useState();
   
-  
+  const handleClick = (e) => {
+    e.preventDefault();
+    const validationErrors = validateEmployee(data);
+    const isValid = Object.keys(validationErrors).length === 0;
+    // console.log(validationErrors, isValid);
+    setErrors(validationErrors);
+    if (isValid) {
+      console.log(data);
+      const route = newEmployee ? '/employee/create' : '/employee/update'
+      sendRequest(route, 'POST', data)
+        .then((res) => {
+          if (res.success) {
+            toast.success(res.message, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            });
+            handleReset();
+          } else {
+            toast.error(res.message, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            });
+          }
+        })
+    } else {
+      console.log(errors);
+      toast.error("Enter Customer Details Properly");
+    }
+  }
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -28,9 +66,12 @@ export default function Employee() {
   }
 
   const handleReset = () => {
+    setSearch(null)
     setData(resetData);
+    setNames([]);
     setErrors({})
     setNewEmployee(true);
+    loadEmployees();
   }
 
   const handleAutocomplete = (e, value, option) => {
@@ -62,19 +103,26 @@ export default function Employee() {
           }
       })
     }
-  }, [newEmployee])
-  
-  useEffect(() => {
-      sendRequest("/employee/getnamelist", 'POST')
-        .then((res) => {
-          if (res.success) {
-            console.log(res.data)
-            setNames(res.data);
-          }
-        })
-    }, [])
+  }, [newEmployee, data.e_id])
 
-  console.log(data,names,search);
+  const loadEmployees = async () => {
+    try {
+      const res = await sendRequest("/employee/getnamelist", "POST");
+      if (res.success) {
+        // console.log(res.data);
+        setNames(res.data);
+      }
+    } catch (err) {
+      console.log(err, "error loading employeeList");
+    }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => await loadEmployees();
+    fetchData();
+  }, [])
+
+  // console.log(data,names,search);
   return (
       <div className='font'>
       <ToastContainer />
@@ -129,7 +177,7 @@ export default function Employee() {
                 value={data.name || ""}
                 size='small'
                 onChange={handleChange}
-                // {...(errors.name && { error: true, helperText: errors.name })}
+                {...(errors.name && { error: true, helperText: errors.name })}
                 className='w-100'
               />
             </div>
@@ -142,7 +190,7 @@ export default function Employee() {
                 size='small'
                 value={data.phone || ""}
                 onChange={handleChange}
-                // {...(errors.phone && { error: true, helperText: errors.phone })}
+                {...(errors.phone && { error: true, helperText: errors.phone })}
                 className='w-100'
               />
             </div>
@@ -155,22 +203,12 @@ export default function Employee() {
                 className='w-100'
                 onChange={handleChange}
                 value={data.type || ""}
-                // {...(errors.shirt_type && { error: true, helperText: errors.shirt_type })}
+                {...(errors.type && { error: true, helperText: errors.type })}
                 size="small"
               >
                 {
                   EmployeeType.map((type) => (
-                    <MenuItem key={type.value} value={type.value} sx={{
-                      "& li": {
-                        backgroundColor: "white",
-                      },
-                      "&:hover": {
-                        backgroundColor: "#9966cb",
-                      },
-                      "&.Mui-focusVisible": {
-                        backgroundColor: "#9966cb",
-                      }
-                    }}>
+                    <MenuItem key={type.value} value={type.value}>
                       {type.name}
                     </MenuItem>
                   ))
@@ -186,22 +224,12 @@ export default function Employee() {
                 className='w-100'
                 onChange={handleChange}
                 value={data.wages_type || ""}
-                // {...(errors.shirt_type && { error: true, helperText: errors.shirt_type })}
+                {...(errors.wages_type && { error: true, helperText: errors.wages_type })}
                 size="small"
               >
                 {
                   WagesType.map((type) => (
-                    <MenuItem key={type.value} value={type.value} sx={{
-                      "& li": {
-                        backgroundColor: "white",
-                      },
-                      "&:hover": {
-                        backgroundColor: "#9966cb",
-                      },
-                      "&.Mui-focusVisible": {
-                        backgroundColor: "#9966cb",
-                      }
-                    }}>
+                    <MenuItem key={type.value} value={type.value}>
                       {type.name}
                     </MenuItem>
                   ))
@@ -232,168 +260,14 @@ export default function Employee() {
         <div className='flex justify-center gap-2 mx-auto w-4/5 my-6' >
           <button
             className='cursor-pointer border-black border-2 w-1/2 bg-white font-bold rounded-md shadow-md py-2 shadow-black'
-            // onClick={handleClick}
-          >{newEmployee ? 'Create Customer' : 'Update Customer'} </button>
+            onClick={handleClick}
+          >{newEmployee ? 'Create Employee' : 'Update Employee'} </button>
           <button
             className='cursor-pointer border-black border-2 w-1/2 bg-emerald-600 font-bold text-white rounded-md shadow-md shadow-black'
             onClick={handleReset}
           >Reset</button>
         </div>
       </div>
-      {/*<Grid container direction="column" justifyContent="center" className='pa2'>
-          <Grid item xs className='ml3 mr3 mt3'>
-            <div className='flex justify-start items-center'>
-              <pre className='pr2 black'>Search               </pre>
-              <Autocomplete
-                freeSolo
-                options={names}
-                fullWidth
-                size='small'
-                onChange={handleAutocomplete}
-                filterOptions={createFilterOptions({
-                  matchFrom: "start",
-                  stringify: (option) => option.name
-                })}
-                getOptionLabel={(option) => option.name}
-                renderInput={(params) => <TextField
-                  {...params}
-                  value={search.name}
-                  variant='outlined'
-                  className='w-100'
-                />}
-              />
-              <button
-                onClick={handleFind}
-                className="button-border pointer tc mh2 bg-dark-green b--black light-gray ba bw1 dim dib w-30 h2 br2 b"
-              >Search</button>
-            </div>
-          </Grid>
-          <Grid item xs>
-            <Grid container direction="row" alignItems="center">
-              <Grid item xs className='ma3'>
-                <div className='flex justify-start items-center'>
-                  <pre className='pr2 black'>{`Employee Id        #${data.e_id}`}</pre>
-                </div>
-                <div className='flex justify-start items-center'>
-                  <pre className='pr2 black'>Enter Name       </pre>
-                  <TextField
-                    variant='outlined'
-                    autoFocus
-                    name='name'
-                    value={data.name ||""}
-                    onChange={handleChange}
-                    // {...(errors.name && { error: true, helperText: errors.name })}
-                    className='w-100'
-                  />
-                </div>
-                <div className='flex justify-start items-center'>
-                  <pre className='pr2 black'>Enter Contact    </pre>
-                  <TextField
-                    variant='outlined'
-                    name='phone'
-                    inputProps={{ maxLength: 10 }}
-                    value={data.phone ||""}
-                    onChange={handleChange}
-                    // {...(errors.phone && { error: true, helperText: errors.phone })}
-                    className='w-100'
-                  />
-              </div>
-              <div className='flex justify-start items-center'>
-                <pre className='pr2 black'>Employee Type  </pre>
-                <TextField
-                  select
-                  variant='outlined'
-                  name='type'
-                  className='w-100'
-                  onChange={handleChange}
-                  value={data.type||""}
-                  // {...(errors.shirt_type && { error: true, helperText: errors.shirt_type })}
-                  size="small"
-                >
-                  {
-                    EmployeeType.map((type) => (
-                      <MenuItem key={type.value} value={type.value} sx={{
-                        "& li": {
-                          backgroundColor: "white",
-                        },
-                        "&:hover": {
-                          backgroundColor: "#9966cb",
-                        },
-                        "&.Mui-focusVisible": {
-                          backgroundColor: "#9966cb",
-                        }
-                      }}>
-                        {type.name}
-                      </MenuItem>
-                    ))
-                  }
-                </TextField>
-              </div>
-              <div className='flex justify-start items-center'>
-                <pre className='pr2 black'>Employee Wage</pre>
-                <TextField
-                  select
-                  variant='outlined'
-                  name='wages_type'
-                  className='w-100'
-                  onChange={handleChange}
-                  value={data.wages_type||""}
-                  // {...(errors.shirt_type && { error: true, helperText: errors.shirt_type })}
-                  size="small"
-                >
-                  {
-                    WagesType.map((type) => (
-                      <MenuItem key={type.value} value={type.value} sx={{
-                        "& li": {
-                          backgroundColor: "white",
-                        },
-                        "&:hover": {
-                          backgroundColor: "#9966cb",
-                        },
-                        "&.Mui-focusVisible": {
-                          backgroundColor: "#9966cb",
-                        }
-                      }}>
-                        {type.name}
-                      </MenuItem>
-                    ))
-                  }
-                </TextField>
-              </div>
-              </Grid>
-              <Grid item className='ma3'>
-                <Avatar variant="rounded" sx={{ background: "#19A974", height: 175, width: 175 }}>
-                  <PersonAddIcon className="center" sx={{ fontSize: 100 }} />
-                </Avatar>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <div className='flex justify-start items-center ma3'>
-              <pre className='pr2 black'>Enter Address    </pre>
-              <TextField
-                variant='outlined'
-                name='address'
-                value={data.address ||""}
-                onChange={handleChange}
-                // {...(errors.address && { error: true, helperText: errors.address })}
-                className='w-100'
-              />
-            </div>
-          </Grid>
-          <Grid item xs>
-            <div className='flex justify-center center ma3'>
-              <button
-                className='button-border pointer tc ma2 bg-white ba bw1 dim dib w5 pa2 br2 b'
-                // onClick={handleClick}
-              >{newEmployee ? 'Create Employee' : 'Update Employee'} </button>
-              <button
-                className='button-border pointer tc ma2 bg-dark-green b--black light-gray ba bw1 dim dib w5 pa2 br2 b'
-                onClick={handleReset}
-              >Reset</button>
-            </div>
-          </Grid>
-        </Grid>*/}
       </div >
     )
 }

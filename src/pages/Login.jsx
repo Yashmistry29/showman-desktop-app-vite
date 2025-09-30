@@ -116,16 +116,3 @@ const Login = () => {
 }
 
 export default Login;
-
-
-// <Form>
-//   <TextFieldForm
-//     name="username"
-//     label="Username"
-//     type="text"
-//     variant="outlined"
-//     focused
-//     inputLabelProps={{ style: { color: "#ffffff" } }}
-//   />
-//   <button className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue">Login</button>
-// </Form>

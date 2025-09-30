@@ -8,7 +8,7 @@ import { useMeasurement } from '../context/MeasurementContext';
 // Reusable Fieldset component for Pant/Shirt
 function MeasurementFieldset({ checked, name, label, onChange, children }) {
   return (
-    <fieldset className={`${checked ? 'border-black border-4' : 'border-stone-400 border-2'}`} >
+    <fieldset className={`${checked ? 'border-black border-[3px]' : 'border-stone-400 border-2'}`} >
       <legend className={`${checked ? 'text-black font-bold' : 'text-stone-400 font-medium'} ml-4 px-2`}>
         <FormGroup>
           <FormControlLabel
@@ -20,7 +20,7 @@ function MeasurementFieldset({ checked, name, label, onChange, children }) {
                 sx={{ '&.Mui-checked': { color: '#000' } }}
               />
             }
-            label={<span className='text-lg font-medium'>{label}</span>}
+            label={<span className='text-base font-semibold'>{label}</span>}
           />
         </FormGroup>
       </legend>

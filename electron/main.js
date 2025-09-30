@@ -34,7 +34,7 @@ const createWindow = () => {
 
   isDev
     ? localChildWindow.loadURL('http://localhost:5173/#/')
-    : localChildWindow.loadFile(path.join(__dirname, 'index.html'));
+    : localChildWindow.loadFile(path.join(__dirname, '../dist/index.html'));
 
   localChildWindow.setMenu(null);
   localChildWindow.show();
@@ -79,7 +79,7 @@ ipcMain.on('Authenticated', (e, args) => {
     localHomePageWindow.setMenu(null);
     isDev
       ? localHomePageWindow.loadURL('http://localhost:5173/#/homepage')
-      : localHomePageWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/homepage' });
+      : localHomePageWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/homepage' });
 
     localHomePageWindow.show();
 
@@ -104,7 +104,7 @@ ipcMain.on('Timeout', (e, args) => {
     localMainWindow.setMenu(menu);
     isDev
       ? localMainWindow.loadURL('http://localhost:5173/#/dashboard')
-      : localMainWindow.loadFile(path.join(__dirname, 'index.html'), { hash: '/dashboard' });
+      : localMainWindow.loadFile(path.join(__dirname, '../dist/index.html'), { hash: '/dashboard' });
 
     localMainWindow.maximize();
     localMainWindow.show();
@@ -124,7 +124,7 @@ ipcMain.on('jobDetails', (e, data) => {
   localChildWindow.setMenu(printMenu);
   isDev
     ? localChildWindow.loadURL(`http://localhost:5173/#/print?job_id=${data.job_id}&c_id=${data.c_id}`)
-    : localChildWindow.loadFile(path.join(__dirname, 'index.html'), {
+    : localChildWindow.loadFile(path.join(__dirname, '../dist/index.html'), {
       hash: `/print?job_id=${data.job_id}&c_id=${data.c_id}`
     });
 
