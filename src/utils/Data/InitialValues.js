@@ -47,7 +47,7 @@ export const CreateEmployee = {
   name: "",
   phone: "",
   address: "",
-  type: "",
+  type: [],
   wages_type: "",
 }
 
@@ -59,10 +59,6 @@ export const EmployeeType = [
   {
     name: "Pant",
     value: "pant"
-  },
-  {
-    name: "Shirt & Pant",
-    value: "shirt & pant"
   },
   {
     name: "Button and Press",

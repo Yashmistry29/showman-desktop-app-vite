@@ -86,7 +86,7 @@ function NameSearch({ data, setData, setPage }) {
       <fieldset className='bg-slate-50/70 rounded-2xl shadow-xl shadow-gray-300/25 border-2'>
         <legend className='ml-4 px-2 font-bold'>Search Job using Name or Mobile/ નામ અથવા મોબાઈલ નં.</legend>
         <div className='flex flex-col gap-4 py-4 px-8'>
-          <div className='flex justify-start items-center w-8/12'>
+          <div className='flex justify-start items-center w-3/4'>
             <pre className='font-medium pr-2'>Enter Name  </pre>
             <Autocomplete
               disableClearable
@@ -126,7 +126,7 @@ function NameSearch({ data, setData, setPage }) {
             />
           </div>
           <p className='font-medium'>or</p>
-          <div className='flex justify-start items-center w-8/12 py-2'>
+          <div className='flex justify-start items-center w-3/4 py-2'>
             <pre className='font-medium pr-2'>Enter Mobile </pre>
             <CssTextField
               variant='outlined'

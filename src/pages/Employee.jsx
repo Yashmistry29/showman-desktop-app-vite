@@ -1,7 +1,7 @@
-import { Autocomplete, Avatar, createFilterOptions } from '@mui/material'
+import { Autocomplete, Avatar, Checkbox, createFilterOptions, FormControl, ListItemText, Select } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
-import { CssTextField as TextField } from '../components/FormElements/TextfieldForm'
+import { CssTextField as TextField, CssOutlinedInput as OutlinedInput } from '../components/FormElements/TextfieldForm'
 import { StyledMenu as MenuItem } from '../components/FormElements/ListItemButton'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { NewEmployee,EmployeeType,WagesType,CreateEmployee,EmployeeSearch } from '../utils/Data/InitialValues';
@@ -76,7 +76,7 @@ export default function Employee() {
 
   const handleAutocomplete = (e, value, option) => {
     console.log(value, option)
-    setSearch({ ...search, name: value.id });
+    setSearch({ ...search, name: value.name });
     setId(value.id)
   }
 
@@ -196,7 +196,7 @@ export default function Employee() {
             </div>
             <div className='flex justify-start items-center'>
               <pre className='pr2 black'>Employee Type   </pre>
-              <TextField
+              {/* <TextField
                 select
                 variant='outlined'
                 name='type'
@@ -213,7 +213,25 @@ export default function Employee() {
                     </MenuItem>
                   ))
                 }
-              </TextField>
+              </TextField> */}
+              <FormControl sx={{ width: '100%' }} size="small">
+                <Select
+                  multiple
+                  name="type"
+                  value={data.type || []}
+                  onChange={handleChange}
+                  input={<OutlinedInput />}
+                  renderValue={(selected) => selected.join(', ')}
+                  {...(errors.wages_type && { error: true })}
+                >
+                  {EmployeeType.map((type) => (
+                    <MenuItem key={type.value} value={type.value}>
+                      <Checkbox sx={{ '&.Mui-checked': { color: '#0891b2' } }} checked={data.type ? data.type.indexOf(type.value) > -1 : false} />
+                      <ListItemText primary={type.name} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
             <div className='flex justify-start items-center'>
               <pre className='pr2 black'>Employee Wage </pre>
@@ -235,6 +253,7 @@ export default function Employee() {
                   ))
                 }
               </TextField>
+
             </div>
           </div>
           <div className='col-span-1 px-5'>

@@ -13,38 +13,40 @@ function PrintTemplate({ jobData, customerData, ShirtData, PantData}) {
           <tr >
             <td colSpan={2}>
               <div className='font'>
-                <pre className='font-bold lg:text-3xl md:text-2xl ml-5'>Showman Tailors</pre>
+                <pre className='font-bold lg:text-3xl md:text-2xl ml-5 mb-5'>Showman Tailors</pre>
               </div>
             </td>
-            <td colSpan={2} className="font1 px-4 py-2">
+            <td colSpan={2} >
+              <div className="font1 mb-8 mt-0 mx-4">
               <pre className='font-semibold lg:text-3xl md:text-lg'>{`Job Date    : ${createdAt.getDate() + '-' + Number(createdAt.getUTCMonth() + 1) + '-' + createdAt.getFullYear()}`}</pre>
               <pre className='font-semibold lg:text-3xl md:text-lg'>{`Customer Id : ${customerData.c_id}`}</pre>
+              </div>
             </td>
           </tr>
           <tr>
             <td className='pv3 font2' colSpan={2}>
-              <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-2'>
-              <div className='w-full p-4'>
-                <pre className='lg:text-3xl md:text-lg my-2 font-semibold'>{`પેન્ટ\t\t : ${jobData.pant_quantity}`}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`લંબાઈ\t : `}</span>{PantData === undefined ? "" : PantData.p_length}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`કમર\t\t : `}</span>{PantData === undefined ? "" : PantData.waist}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`ઝોલો\t : `}</span>{PantData === undefined ? "" : PantData.jholo}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`સીટ\t\t : `}</span>{PantData === undefined ? "" : PantData.seat}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`જાંઘ\t\t : `}</span>{PantData === undefined ? "" : PantData.thighs}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`ઘુંટણ\t : `}</span>{PantData === undefined ? "" : PantData.knee}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`મોરી\t\t : `}</span>{PantData === undefined ? "" : PantData.bottom}</pre>
+              <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-2 mb-8 mt-0 mx-4'>
+                <div className='w-full px-4'>
+                  <pre className='lg:text-3xl md:text-lg mb-5 mt-1 font-semibold'>{`પેન્ટ\t\t : ${jobData.pant_quantity}`}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`લંબાઈ\t : `}</span>{PantData === undefined ? "" : PantData.p_length}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`કમર\t\t : `}</span>{PantData === undefined ? "" : PantData.waist}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`ઝોલો\t : `}</span>{PantData === undefined ? "" : PantData.jholo}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`સીટ\t\t : `}</span>{PantData === undefined ? "" : PantData.seat}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`જાંઘ\t\t : `}</span>{PantData === undefined ? "" : PantData.thighs}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`ઘુંટણ\t : `}</span>{PantData === undefined ? "" : PantData.knee}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`મોરી\t\t : `}</span>{PantData === undefined ? "" : PantData.bottom}</pre>
               </div>
                 <div className='w-full p-4'>
-                  <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બેલ્ટ\t\t     : `}</span>{PantData === undefined ? "" : PantData.belt_type}</pre>
-                  <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પોકેટ\t     : `}</span>{PantData === undefined ? "" : PantData.pocket_type}</pre>
-                  <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`ચીપટી\t     : `}</span>{PantData === undefined ? "" : PantData.chipti}</pre>
-                  <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બેક પોકેટ : `}</span>{PantData === undefined ? "" : PantData.back_pocket}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`બેલ્ટ\t\t     : `}</span>{PantData === undefined ? "" : PantData.belt_type}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`પોકેટ\t     : `}</span>{PantData === undefined ? "" : PantData.pocket_type}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`ચીપટી\t     : `}</span>{PantData === undefined ? "" : PantData.chipti}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`બેક પોકેટ : `}</span>{PantData === undefined ? "" : PantData.back_pocket}</pre>
                   {
                     PantData === undefined || PantData.description !== "" ?
                       <>
-                        <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
-                        <div className='mx-0 my-4 py-8 border-2 border-dashed'>
-                          <p className='lg:text-3xl md:text-lg'>{PantData === undefined ? "" : PantData.description}</p>
+                        <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`વિગત \n`}</span></pre>
+                        <div className='border-2 border-dashed'>
+                          <p className='lg:text-3xl md:text-lg pb-16 pl-1'>{PantData === undefined ? "" : PantData.description}</p>
                         </div>
                       </> : ""
 
@@ -53,27 +55,27 @@ function PrintTemplate({ jobData, customerData, ShirtData, PantData}) {
               </div>
             </td>
             <td className='pv3 font2' colSpan={2}>
-              <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-2'>
-                <div className='w-full p-4'>
-                  <pre className='lg:text-3xl md:text-lg my-2 font-semibold'>{`${ShirtData.shirt_type} : ${jobData.shirt_quantity}`}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`લંબાઈ : `}</span>{ShirtData === undefined ? "" : ShirtData.s_length}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`સોલ્ડર : `}</span>{ShirtData === undefined ? "" : ShirtData.shoulder}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`બાંય\t: `}</span>{ShirtData === undefined ? "" : ShirtData.sleeve}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`કફ\t\t: `}</span>{ShirtData === undefined ? "" : ShirtData.cuff}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`છાતી   : `}</span>{ShirtData === undefined ? "" : ShirtData.chest}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`કમર    : `}</span>{ShirtData === undefined ? "" : ShirtData.waist}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`સીટ     : `}</span>{ShirtData === undefined ? "" : ShirtData.seat}</pre>
+              <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-2 mb-8 mt-0 mx-4'>
+                <div className='w-full px-4'>
+                  <pre className='lg:text-3xl md:text-lg mb-5 mt-1 font-semibold'>{`${ShirtData.shirt_type}  : ${jobData.shirt_quantity}`}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`લંબાઈ\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.s_length}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`સોલ્ડર\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.shoulder}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`બાંય\t\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.sleeve}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`કફ\t\t\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.cuff}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`છાતી\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.chest}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`કમર\t\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.waist}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`સીટ\t\t\t\t : `}</span>{ShirtData === undefined ? "" : ShirtData.seat}</pre>
               </div>
                 <div className='w-full p-4'>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`કોલર : `}</span>{ShirtData === undefined ? "" : ShirtData.collar}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પોકેટ : `}</span>{ShirtData === undefined ? "" : ShirtData.pocket}</pre>
-                <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`પટ્ટી    : `}</span>{ShirtData === undefined ? "" : ShirtData.strip === 'in' ? 'અંદર' : ShirtData.strip === "out" ? 'આગળ' : ShirtData.strip}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`કોલર : `}</span>{ShirtData === undefined ? "" : ShirtData.collar}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`પોકેટ : `}</span>{ShirtData === undefined ? "" : ShirtData.pocket}</pre>
+                  <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`પટ્ટી    : `}</span>{ShirtData === undefined ? "" : ShirtData.strip === 'in' ? 'અંદર' : ShirtData.strip === "out" ? 'આગળ' : ShirtData.strip}</pre>
                   {
                     ShirtData === undefined || ShirtData.description !== "" ?
                       <>
-                        <pre className='lg:text-3xl md:text-lg my-2'><span className="font-semibold">{`વિગત \n`}</span></pre>
-                        <div className='mx-0 my-4 py-8 border-2 border-dashed'>
-                          <p className='lg:text-3xl md:text-lg'>{ShirtData === undefined ? "" : ShirtData.description}</p>
+                        <pre className='lg:text-3xl md:text-lg mb-3'><span className="font-semibold">{`વિગત \n`}</span></pre>
+                        <div className='border-2 border-dashed'>
+                          <p className='lg:text-3xl md:text-lg pb-16 pl-1'>{ShirtData === undefined ? "" : ShirtData.description}</p>
                         </div>
                       </> : ""
                   }
@@ -82,14 +84,19 @@ function PrintTemplate({ jobData, customerData, ShirtData, PantData}) {
             </td>
           </tr>
           <tr>
-            <td colSpan={2} className="px-4 py-1 font1">
+            <td colSpan={2} >
+              <div className="mb-8 mt-0 mx-4 font1">
               <pre className='lg:text-3xl md:text-lg font-semibold'>{`Name\t: ${customerData.name}`}</pre>
               <pre className='lg:text-3xl md:text-lg font-semibold'>{`Address\t: ${customerData.address}`}</pre>
               <pre className='lg:text-3xl md:text-lg font-semibold'>{`Contact\t: ${customerData.phone}, ${customerData.phone2}`}</pre>
+              </div>
             </td>
-            <td colSpan={2} className="px-4 font1">
+            <td colSpan={2} >
+              <div className="mb-8 mt-0 mx-4 font1">
               <pre className='lg:text-3xl md:text-lg font-semibold'>{`JobNumber     : ${jobData.job_id}`}</pre>
+              <pre className='lg:text-3xl md:text-lg font-semibold'>{`\t`}</pre>
               <pre className='lg:text-3xl md:text-lg font-semibold'>{`Delivery Date : ${returnDate.getDate() + '-' + Number(returnDate.getUTCMonth() + 1) + '-' + returnDate.getFullYear()}`}</pre>
+              </div>
             </td>
           </tr>
         </tbody>

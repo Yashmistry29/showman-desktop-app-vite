@@ -38,7 +38,7 @@ const PantGrid = () => {
     <div className='grid md:grid-cols-1 lg:grid-cols-2 w-11/12 mx-auto'>
       <div className='flex flex-col gap-2 py-2 my-auto'>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Belt\t\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Belt\t\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             select
@@ -73,7 +73,7 @@ const PantGrid = () => {
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Waist\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Waist\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'
@@ -86,7 +86,7 @@ const PantGrid = () => {
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Jholo\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Jholo\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'
@@ -99,7 +99,7 @@ const PantGrid = () => {
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Seat\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Seat\t\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'
@@ -112,7 +112,7 @@ const PantGrid = () => {
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Thighs\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Thighs\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'
@@ -126,7 +126,7 @@ const PantGrid = () => {
           />
         </div>
         <div className='flex justify-start items-center w-5/6'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Knee\t  `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Knee\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'
@@ -155,7 +155,7 @@ const PantGrid = () => {
       </div>
       <div className='flex flex-col gap-2 py-2'>
         <div className='flex justify-start items-center'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Pocket\t\t   `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Pocket\t\t\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             select
@@ -178,7 +178,7 @@ const PantGrid = () => {
           </CssTextField>
         </div>
         <div className='flex justify-start items-center'>
-          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Chipti\t\t\t   `}</pre>
+          <pre className={`${checkedData.pant ? 'text-black' : 'text-stone-500'} font-bold`}>{`Chipti\t\t\t `}</pre>
           <CssTextField
             disabled={!checkedData.pant}
             variant='outlined'

@@ -61,7 +61,7 @@ const ShirtGrid = () => {
 					</CssTextField>
 				</div>
 				<div className='flex justify-start items-center w-5/6'>
-					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`} >{`Length\t `}</pre>
+					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`} >{`Length\t\t `}</pre>
 					<CssTextField
 						disabled={!checkedData.shirt}
 						variant='outlined'
@@ -139,7 +139,7 @@ const ShirtGrid = () => {
 					/>
 				</div>
 				<div className='flex justify-start items-center w-5/6'>
-					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Seat\t\t `}</pre>
+					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Seat\t\t\t `}</pre>
 					<CssTextField
 						disabled={!checkedData.shirt}
 						variant='outlined'
@@ -154,7 +154,7 @@ const ShirtGrid = () => {
 			</div>
 			<div className='flex flex-col gap-2 py-2'>
 				<div className='flex justify-start items-center'>
-					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Pocket\t\t `}</pre>
+					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Pocket\t\t   `}</pre>
 					<CssTextField
 						disabled={!checkedData.shirt}
 						variant='outlined'
@@ -167,7 +167,7 @@ const ShirtGrid = () => {
 					/>
 				</div>
 				<div className='flex justify-start items-center'>
-					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Collar\t\t\t `}</pre>
+					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Collar\t\t   `}</pre>
 					<CssTextField
 						disabled={!checkedData.shirt}
 						variant='outlined'
@@ -180,7 +180,7 @@ const ShirtGrid = () => {
 					/>
 				</div>
 				<div className='flex justify-start items-center'>
-					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Strip\t\t\t `}</pre>
+					<pre className={`${checkedData.shirt ? 'text-black' : 'text-stone-500'} font-bold`}>{`Strip\t\t   `}</pre>
 					<CssTextField
 						disabled={!checkedData.shirt}
 						select

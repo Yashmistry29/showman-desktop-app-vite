@@ -35,40 +35,40 @@ function PrintReceiptTemplate({ jobData, customerData, shirt_type, advance }) {
           <tr>
             <td rowSpan={2} colSpan={3}>
               <div className='text-center font'>
-                <p className='lg:text-4xl md:text-lg tracking-[0.75rem] my-0'>SHOWMAN</p>
-                <p className='lg:text-lg md-text-xs lg:tracking-[1.25rem] md:tracking-[0.7rem] my-2'>TAILORS</p>
+                <p className='lg:text-2xl md:text-lg font-light tracking-[0.75rem] my-0'>SHOWMAN</p>
+                <p className='lg:text-base md-text-xs lg:tracking-[1.25rem] md:tracking-[0.7rem] my-2'>TAILORS</p>
               </div>
             </td>
             <td colSpan={1}>
-              <p className='font-bold m-1 lg:text-base md:text-xs'>Description</p>
+              <p className='font-bold m-1 lg:text-base md:text-xs mb-4 mt-0 pl-1'>Description</p>
               </td>
             <td>
-              <p className='font-bold m-1 lg:text-base md:text-xs'>Quantity</p>
+              <p className='font-bold m-1 lg:text-base md:text-xs mb-4 mt-0 pl-1'>Quantity</p>
             </td>
             <td>
-              <p className='font-bold m-1 lg:text-base md:text-xs'>Price</p>
+              <p className='font-bold m-1 lg:text-base md:text-xs mb-4 mt-0 pl-1'>Price</p>
             </td>
             <td>
-              <p className='font-bold m-1 lg:text-base md:text-xs'>Q.Price</p>
+              <p className='font-bold m-1 lg:text-base md:text-xs mb-4 mt-0 pl-1'>Q.Price</p>
             </td>
             <td rowSpan={9}></td>
           </tr>
           <tr>
-            <td rowSpan={4} colSpan={1} style={{ wordWrap: "break-word" }}>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{jobData.pant_quantity !== 0 ? `પેન્ટ` : "-"}</p>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-2 mt-0'>{jobData.shirt_quantity !== 0 ? `${shirt_type}` : "-"}</p> 
+            <td rowSpan={4} colSpan={1} style={{ wordWrap: "break-word", verticalAlign:"top" }}>
+              <p className='lg:text-lg md:text-xs mb-10 ml-2 mt-0'>{jobData.pant_quantity !== 0 ? `પેન્ટ` : "-"}</p>
+              <p className='lg:text-lg md:text-xs ml-2 mt-0'>{jobData.shirt_quantity !== 0 ? `${shirt_type}` : "-"}</p> 
             </td>
-            <td rowSpan={4}>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.pant_quantity !== 0 ? `${jobData.pant_quantity}` : "-"}</p>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${jobData.shirt_quantity}` : "-"}</p>
+            <td rowSpan={4} style={{ verticalAlign:"top" }}>
+              <p className='lg:text-lg md:text-xs mb-10 ml-3 mt-0'>{jobData.pant_quantity !== 0 ? `${jobData.pant_quantity}` : "-"}</p>
+              <p className='lg:text-lg md:text-xs ml-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${jobData.shirt_quantity}` : "-"}</p>
             </td>
-            <td rowSpan={4}>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.pant_quantity !== 0 ? `${cprice.pant_price}` : '-'}</p>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${cprice.shirt_price}` : '-'}</p>
+            <td rowSpan={4} style={{ verticalAlign:"top" }}>
+              <p className='lg:text-lg md:text-xs mb-10 ml-3 mt-0'>{jobData.pant_quantity !== 0 ? `${cprice.pant_price}` : '-'}</p>
+              <p className='lg:text-lg md:text-xs ml-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${cprice.shirt_price}` : '-'}</p>
             </td>
-            <td rowSpan={4}>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.pant_quantity !== 0 ? `${Itemprice.pant_price}` : '-'}</p>
-              <p className='lg:text-base md:text-xs font-bold pb-4 pl-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${Itemprice.shirt_price}` : '-'}</p>
+            <td rowSpan={4} style={{ verticalAlign:"top" }}>
+              <p className='lg:text-lg md:text-xs mb-10 ml-3 mt-0'>{jobData.pant_quantity !== 0 ? `${Itemprice.pant_price}` : '-'}</p>
+              <p className='lg:text-lg md:text-xs ml-3 mt-0'>{jobData.shirt_quantity !== 0 ? `${Itemprice.shirt_price}` : '-'}</p>
             </td>
           </tr>
           <tr>
@@ -87,40 +87,40 @@ function PrintReceiptTemplate({ jobData, customerData, shirt_type, advance }) {
           <tr></tr>
           <tr>
             <td rowSpan={3} colSpan={3}>
-              <div className='md:text-xs lg:text-base text-center my-2'>
+              <div className='md:text-xs lg:text-base text-center mb-4 mt-0'>
                 <p className='font-bold'>પેન્ટ શર્ટ સફારી સૂટ ના સ્પેશિયાલિસ્ટ</p>
                 <p className='font-bold'>જુનગામ, મેઇન રોડ, ફોર્ટ સોનગઢ, જી. તાપી</p>
                 <p className='font-bold'>Contact: 9426876500, 9913176500</p>
               </div>
             </td>
             <td colSpan={2}>
-              <pre className='lg:text-base md:text-xs m-1'><span className='font-bold'>Job Date</span> {`: ${createdAt.getDate() + '/' + Number(createdAt.getUTCMonth() + 1) + '/' + createdAt.getFullYear()}`}</pre>
+              <pre className='lg:text-lg md:text-xs mb-4 mt-0 mx-1'><span className='font-bold'>Job Date</span> {`: ${createdAt.getDate() + '/' + Number(createdAt.getUTCMonth() + 1) + '/' + createdAt.getFullYear()}`}</pre>
             </td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold m-1'>Item Total</pre>
+              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold mb-4 mt-0 mx-1'>Item Total</pre>
             </td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] pl-2 '>{Itemprice.shirt_price + Itemprice.pant_price}</pre>
+              <pre className='lg:text-lg md:text-[0.8em] pl-2 mb-4 mt-0 mx-1 '>{Itemprice.shirt_price + Itemprice.pant_price}</pre>
             </td>
           </tr>
           <tr>
             <td colSpan={2}>
-              <pre className='lg:text-base md:text-xs m-1'><span className='font-bold'>Delivery Date</span> {`: ${returnDate.getDate() + '/' + Number(returnDate.getUTCMonth() + 1) + '/' + returnDate.getFullYear()}`}</pre>
+              <pre className='lg:text-lg md:text-xs mb-4 mt-0 mx-1'><span className='font-bold'>Del. Date</span> {`: ${returnDate.getDate() + '/' + Number(returnDate.getUTCMonth() + 1) + '/' + returnDate.getFullYear()}`}</pre>
             </td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold m-1'>Advance</pre>
+              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold mb-4 mt-0 mx-1'>Advance</pre>
             </td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] pl-2'>{advance}</pre>
+              <pre className='lg:text-lg md:text-[0.8em] pl-2 mb-4 mt-0 mx-1'>{advance}</pre>
             </td>
           </tr>
           <tr>
             <td colSpan={2}></td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold m-1'>Total</pre>
+              <pre className='lg:text-[0.9em] md:text-[0.8em] font-bold mb-4 mt-0 mx-1'>Total</pre>
             </td>
             <td>
-              <pre className='lg:text-[0.9em] md:text-[0.8em] pl-2'>{Itemprice.shirt_price + Itemprice.pant_price - advance}</pre>
+              <pre className='lg:text-lg md:text-[0.8em] pl-2 mb-4 mt-0 mx-1'>{Itemprice.shirt_price + Itemprice.pant_price - advance}</pre>
             </td>
           </tr>
         </tbody>
