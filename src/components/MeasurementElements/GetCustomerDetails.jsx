@@ -82,42 +82,40 @@ export const GetCustomerDetails = () => {
         <div className='flex justify-start items-center w-10/12'>
         <pre className='font-medium pr-2'>Enter Name  </pre>
           <Autocomplete
-            // disablePortal
             disableClearable
             options={names}
-            value={selectedCustomer}
-          fullWidth
-          // size='small'
+            value={names.find((item) => item.c_id === selectedCustomer?.c_id) || null}
+            fullWidth
+            // size='small'
             onChange={handleChange}
+            filterOptions={createFilterOptions({
+              matchFrom: "start",
+              stringify: (option) => option.name ?? ""
+            })}
             slotProps={{
               listbox: {
                 sx: {
-                  "& li": {
-                    backgroundColor: "white",
-                  },
-                  "&:hover": {
-                    backgroundColor: "#0891b2",
-                  }
+                  "& li": { backgroundColor: "white" },
+                  "&:hover": { backgroundColor: "#0891b2" }
                 }
               }
             }}
-            filterOptions={createFilterOptions({
-              matchFrom: "start",
-              stringify: (option) => option.name
-            })}
-            getOptionLabel={(option) => option.name}
-            renderInput={(params) => <CssTextField
-              {...params}
-              variant='outlined'
-              name='name'
-              className='w-80'
-            />}
+            isOptionEqualToValue={(option, value) => option?.c_id === value?.c_id}
+            getOptionLabel={(option) => option.name ?? ""}
+            renderOption={(props, option) => (
+              <li {...props} key={option.c_id}>
+                {option.name}
+              </li>
+            )}
+            renderInput={(params) => (
+              <CssTextField
+                {...params}
+                variant="outlined"
+                name="name"
+                className="w-80"
+              />
+            )}
           />
-          {/* <CssTextField
-            variant='outlined'
-            name='name'
-            className='w-50'
-          /> */}
         </div>
         <div className='flex justify-start items-center w-10/12 gap-3'>
         <pre className='font-medium pr-2'>Select Job  </pre>
@@ -150,7 +148,6 @@ export const GetCustomerDetails = () => {
             }
           </CssTextField>
           <button
-            // className='button-border b--black link pointer tc ma2 bg-button light-gray ba bw1 dim dib w3 w5-l w4-m pa2 br2 b'
           className='cursor-pointer bg-cyan-900 rounded-lg p-3 w-2/5 text-white shadow-xl border-black border-2'
             onClick={handleView}
           >View</button>

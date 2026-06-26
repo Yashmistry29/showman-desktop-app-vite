@@ -62,11 +62,6 @@ function NameSearch({ data, setData, setPage }) {
     setSearch({ ...search, [name]: value });
   }
 
-  const handleAutocomplete = (e, value, option) => {
-    // console.log(value, option)
-    setSearch({ ...search, name: value.c_id });
-  }
-
   useEffect(() => {
     sendRequest("/customer/getnamelist", 'POST')
       .then((res) => {
@@ -75,7 +70,6 @@ function NameSearch({ data, setData, setPage }) {
           setNames(res.data)
         }
       })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // console.log(search);
@@ -114,8 +108,14 @@ function NameSearch({ data, setData, setPage }) {
                 }
               }}
               // map stored c_id back to option object for controlled value
+              isOptionEqualToValue={(option, value) => option?.c_id === value?.c_id}
               value={names.find((item) => item.c_id === search.name) || null}
               getOptionLabel={(option) => option.name ?? ""}
+              renderOption={(props, option) => (
+                <li {...props} key={option.c_id}>
+                  {option.name}
+                </li>
+              )}
               renderInput={(params) => (
                 <CssTextField
                   {...params}

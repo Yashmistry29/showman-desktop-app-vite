@@ -137,33 +137,38 @@ function Customer() {
         <div className='flex justify-start items-center w-full gap-4'>
           <pre className='pr2 black'>Search            </pre>
           <Autocomplete
+            disableClearable
             options={names}
             fullWidth
-            size='small'
+            size="small"
             onChange={handleAutocomplete}
             filterOptions={createFilterOptions({
               matchFrom: "start",
               stringify: (option) => option.name ?? ""
             })}
             slotProps={{
-                listbox: {
-                  sx:{
-                    "& li": {
-                      backgroundColor: "white",
-                    },
-                    "&:hover": {
-                      backgroundColor: "#0891b2",
-                    }
-                  }
-                } 
-              }}
-            value={search}
+              listbox: {
+                sx: {
+                  "& li": { backgroundColor: "white" },
+                  "&:hover": { backgroundColor: "#0891b2" }
+                }
+              }
+            }}
+            isOptionEqualToValue={(option, value) => option?.c_id === value?.c_id}
+            value={names.find((item) => item.c_id === search?.c_id) || null}
             getOptionLabel={(option) => option.name ?? ""}
-            renderInput={(params) => <TextField
-              {...params}
-              variant='outlined'
-              autoFocus
-            />}
+            renderOption={(props, option) => (
+              <li {...props} key={option.c_id}>
+                {option.name}
+              </li>
+            )}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                autoFocus
+              />
+            )}
           />
           <button
             onClick={handleFind}
