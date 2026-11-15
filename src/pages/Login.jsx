@@ -30,7 +30,7 @@ const Login = () => {
     setErrors(validationErrors);
     if (isValid) {
       // console.log(data);
-      sendRequest("/user/login", "POST", data)
+      sendRequest("/user/sessions", "POST", data)
         .then(res => {
           if (res.success) {
             ipcRenderer.send('Authenticated', true);

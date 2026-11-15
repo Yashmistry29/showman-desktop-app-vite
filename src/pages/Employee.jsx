@@ -26,8 +26,10 @@ export default function Employee() {
     setErrors(validationErrors);
     if (isValid) {
       console.log(data);
-      const route = newEmployee ? '/employee/create' : '/employee/update'
-      sendRequest(route, 'POST', data)
+      const route = newEmployee
+        ? '/employee'
+        : `/employee/${encodeURIComponent(data.e_id)}`;
+      sendRequest(route, newEmployee ? 'POST' : 'PUT', data)
         .then((res) => {
           if (res.success) {
             toast.success(res.message, {
@@ -82,7 +84,7 @@ export default function Employee() {
 
   const handleFind = (e) => {
       setNewEmployee(false)
-      sendRequest('/employee/getemployee', 'POST', { e_id: e_id })
+      sendRequest(`/employee/${encodeURIComponent(e_id)}`, 'GET')
         .then(res => {
           if (res) {
             console.log(res)
@@ -95,7 +97,7 @@ export default function Employee() {
 
   useEffect(() => {
     if (newEmployee) {
-      sendRequest('/employee/getid', "POST")
+      sendRequest('/employee/id', "GET")
         .then((res) => {
           // console.log(res)
           if (res.success) {
@@ -107,7 +109,7 @@ export default function Employee() {
 
   const loadEmployees = async () => {
     try {
-      const res = await sendRequest("/employee/getnamelist", "POST");
+      const res = await sendRequest("/employee/names", "GET");
       if (res.success) {
         // console.log(res.data);
         setNames(res.data);

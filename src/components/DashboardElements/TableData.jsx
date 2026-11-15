@@ -96,7 +96,10 @@ function TableData({ data, page, setPage, setData }) {
       customerData: CustomerData,
       jobData: JobData
     });
-    sendRequest('/job/deletejob', 'POST', { job_id: job_id, c_id: c_id })
+    sendRequest(
+      `/job/customer/${encodeURIComponent(c_id)}/jobs/${encodeURIComponent(job_id)}`,
+      'DELETE'
+    )
       .then((res) => {
         if (res.success) {
           toast.info(res.message, {

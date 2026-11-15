@@ -29,7 +29,7 @@ export const GetCustomerDetails = () => {
   const handleView = (e) => {
     e.preventDefault();
     if (jobSelect) {
-      sendRequest('/job/getJob', 'POST', { job_id: jobId})
+      sendRequest(`/job/${encodeURIComponent(jobId)}`, 'GET')
         .then((resp) => {
           if (resp.success) {
             const data = resp.data;
@@ -63,7 +63,7 @@ export const GetCustomerDetails = () => {
   // console.log(selectedCustomer, jobIds, priceData)
   useEffect(() => {
     if (selectedCustomer) {
-      sendRequest("/customer/getcustomer", "POST", { c_id: selectedCustomer.c_id })
+      sendRequest(`/customer/${encodeURIComponent(selectedCustomer.c_id)}`, "GET")
         .then((res) => {
           if (res.success) {
             // console.log(res.data)

@@ -20,7 +20,7 @@ function Price() {
   }
 
   const handleSubmit = () => {
-    sendRequest('/price/editprice', 'POST', newPrice)
+    sendRequest('/price', 'POST', newPrice)
       .then((res) => {
         if (res.success) {
           toast.success(res.message, {
@@ -37,7 +37,7 @@ function Price() {
   }
 
   useEffect(() => {
-    sendRequest("/price/getprice", "POST")
+    sendRequest("/price", "GET")
       .then((res) => {
         const price = res.data;
         setCurrentPrice({ ...price });

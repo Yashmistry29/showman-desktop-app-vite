@@ -14,7 +14,7 @@ function NameSearch({ data, setData, setPage }) {
   const handleSearch = () => {
     // console.log(search);
     if (search.name !== '-') {
-      sendRequest("/job/getAllJobDataByName", "POST", search)
+      sendRequest(`/job/customer/${encodeURIComponent(search.name)}/jobs`, "GET")
         .then((res) => {
           if (res.success) {
             var data = res.data.reverse();
@@ -26,7 +26,7 @@ function NameSearch({ data, setData, setPage }) {
         })
     }
     if (search.mobile !== '') {
-      sendRequest('/job/getAllJobDataByMobile', 'POST', search)
+      sendRequest(`/job/mobile/${encodeURIComponent(search.mobile)}`, 'GET')
         .then((res) => {
           // console.log(res);
           var data = res.data.reverse();
@@ -63,7 +63,7 @@ function NameSearch({ data, setData, setPage }) {
   }
 
   useEffect(() => {
-    sendRequest("/customer/getnamelist", 'POST')
+    sendRequest("/customer/names", 'GET')
       .then((res) => {
         if (res.success) {
           console.log(res.data)
