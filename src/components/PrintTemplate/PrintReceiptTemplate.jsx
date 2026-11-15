@@ -10,7 +10,7 @@ function PrintReceiptTemplate({ jobData, customerData, shirt_type, advance }) {
   })
 
   useEffect(() => {
-    sendRequest("/job/getCurrentJobPrice", "POST", { job_id: jobData.job_id })
+    sendRequest(`/job/${encodeURIComponent(jobData.job_id)}/price`, "GET")
       .then((res) => {
         const result = res.message;
         setPrice(result)

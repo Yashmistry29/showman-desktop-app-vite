@@ -32,7 +32,7 @@ export default function Print() {
   }
 
   useEffect(()=>{
-    sendRequest('/job/getJob','POST',{job_id:ids.job_id})
+    sendRequest(`/job/${encodeURIComponent(ids.job_id)}`,'GET')
       .then(result=>{
         if(result){
           var printContents = result.data;
@@ -46,7 +46,7 @@ export default function Print() {
             setShirtData(printContents.shirt_data);
         }
       })
-      sendRequest('/customer/getcustomer','POST',{c_id:ids.c_id})
+      sendRequest(`/customer/${encodeURIComponent(ids.c_id)}`,'GET')
       .then(result=>{
         if(result){
           var printContents = result.data;

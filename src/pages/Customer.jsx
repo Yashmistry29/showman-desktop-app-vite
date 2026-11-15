@@ -42,8 +42,10 @@ function Customer() {
     setErrors(validationErrors);
     if (isValid) {
       console.log(data);
-      const route = newCustomer ? '/customer/create' : '/customer/edit'
-      sendRequest(route, "POST", data)
+      const route = newCustomer
+        ? '/customer'
+        : `/customer/${encodeURIComponent(data.c_id)}`;
+      sendRequest(route, newCustomer ? "POST" : "PUT", data)
         .then((res) => {
           if (res.success) {
             toast.success(res.message, {
@@ -85,7 +87,7 @@ function Customer() {
 
   const handleFind = (e) => {
     console.log(search);
-    sendRequest('/customer/getcustomer', 'POST', { c_id: search.c_id })
+    sendRequest(`/customer/${encodeURIComponent(search.c_id)}`, 'GET')
       .then(res => {
         if (res) {
           var val = {
@@ -104,7 +106,7 @@ function Customer() {
 
   useEffect(() => {
     if (newCustomer && data.c_id === 0) {
-      sendRequest("/customer/getid", "POST")
+      sendRequest("/customer/id", "GET")
         .then((res) => {
           if (res.success) {
             setData({ c_id: res.message });
@@ -115,7 +117,7 @@ function Customer() {
 
   const loadCustomers = async () => {
     try {
-      const res = await sendRequest("/customer/getnamelist", "POST");
+      const res = await sendRequest("/customer/names", "GET");
         if (res.success) {
           // console.log(res.data);
           setNames(res.data);

@@ -99,11 +99,13 @@ export const MeasurementProvider = ({ children }) => {
     console.log(data, newErrors, isValidCustomer, isValidPant, isValidShirt, isValidDate);
 
     if ((isValidPant || isValidShirt) && isValidDate && isValidCustomer) {
-      var route = '/customer/create';
+      var route = '/customer';
       var c_id = (view) ? { data: customerData.c_id } : await sendRequest(route, 'POST', customerData)
       console.log(c_id)
       console.log(route, data);
-      route = update ? '/job/updateJob' : '/job/createJob';
+      route = update
+        ? `/job/customer/${encodeURIComponent(c_id.data)}/jobs`
+        : '/job';
       var res = await sendRequest(route, 'POST', { c_id: c_id.data, jobData: data })
       console.log(res)
       if (res.success) {
@@ -134,7 +136,7 @@ export const MeasurementProvider = ({ children }) => {
   
   const getLatestJobId = async () => {
     try {
-      const res = await sendRequest("/job/getId", "POST");
+      const res = await sendRequest("/job/id", "GET");
       if (res.success) setId(res.message);
     } catch (err) {
       console.log(err, "Error getting latest JobId");
@@ -143,7 +145,7 @@ export const MeasurementProvider = ({ children }) => {
 
   const loadCustomers = async () => {
     try {
-      const res = await sendRequest("/customer/getnamelist", "POST");
+      const res = await sendRequest("/customer/names", "GET");
       if (res.success) {
         // console.log(res.data);
         setNames(res.data);
@@ -162,7 +164,7 @@ export const MeasurementProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    sendRequest("/price/getprice", "POST")
+    sendRequest("/price", "GET")
       .then((res) => {
         const price = res.data;
         sdata["price"] = price.shirt_price;

@@ -23,7 +23,7 @@ const Signup = () => {
     setErrors(validationErrors);
     if (isValid) {
       console.log(data);
-      sendRequest("/user/signup", "POST", data)
+      sendRequest("/user/accounts", "POST", data)
         .then(res => {
           if (res.success) {
             toast.success(res.message, {

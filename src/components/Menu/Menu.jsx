@@ -58,7 +58,7 @@ function Menu({ item }) {
   }
 
   const handleLogout = () => {
-    sendRequest('/user/signout', 'POST')
+    sendRequest('/user/sessions', 'DELETE')
       .then((resp) => {
         // console.log(resp);
         if (resp.success) {

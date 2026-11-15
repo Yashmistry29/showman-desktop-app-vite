@@ -16,7 +16,7 @@ function CustomerDataDisplay() {
 
 	useEffect(() => {
 		if (customerData.c_id === null || customerData.c_id === undefined) {
-			sendRequest("/customer/getid", "POST")
+			sendRequest("/customer/id", "GET")
 				.then((res) => {
 					if (res.success) {
 						setCustomerData({ c_id: res.message });

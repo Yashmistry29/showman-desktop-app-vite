@@ -10,10 +10,24 @@ export const goToURL = (url, newTab = true) => {
 
 export const sendRequest = async (endpoint = '', method = 'GET', body, test = true) => {
   const URL = test ? test_url : url;
-  const response = await fetch(`${URL}${endpoint}`, {
-    method,
+  const httpMethod = method.toUpperCase();
+  const isReadRequest = httpMethod === 'GET' || httpMethod === 'HEAD';
+  const query = new URLSearchParams();
+
+  if (isReadRequest && body) {
+    Object.entries(body).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        query.append(key, String(value));
+      }
+    });
+  }
+
+  const queryString = query.toString();
+  const requestUrl = `${URL}${endpoint}${queryString ? `${endpoint.includes('?') ? '&' : '?'}${queryString}` : ''}`;
+  const response = await fetch(requestUrl, {
+    method: httpMethod,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
+    body: isReadRequest ? undefined : JSON.stringify(body)
   })
   const data = await response.json();
 

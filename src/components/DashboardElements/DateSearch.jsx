@@ -15,7 +15,10 @@ function DateSearch({ data, setData, setPage }) {
 
   const handleSearch = () => {
     // console.log(value)
-    sendRequest('/job/getJobsBetweenDates', 'POST', value)
+    sendRequest('/job/dates', 'GET', {
+      startDate: value.startDate?.toISOString(),
+      endDate: value.endDate?.toISOString()
+    })
       .then((res) => {
         // console.log(res)
         if (res.success) {
